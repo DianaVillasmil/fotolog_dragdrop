@@ -14,6 +14,34 @@ Para esto seguiremos la siguiente estructura/instrucciones en los pasos:
 
 */
 
+//creamos la funcion para arrastrar
+
+function drag(ev) {
+  console.log(ev.target.id);
+//indicamos el tipo de dato que vamos a insertar
+ev.dataTransfer.setData("text", ev.target.id);
+}
+
+//iniciaalizamos drop
+
+function permitirDrop(ev) {
+  //evitamos que el navegador manipule nuestros datos
+
+  ev.preventDefault();
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  //tomamos el dato que hemos arrastrado
+
+  var id_foto = ev.dataTransfer.getData("text");
+  //agregamos el elemento arastrado al elemento en el que se produjo el evento ondrop
+
+  ev.target.appendChild(document,getElementById(id_foto));
+}
+
+
+
 function agregaPosteo() {
 
   // Paso 1. Rescatamos el contenedor-posteos, el nombre y el
